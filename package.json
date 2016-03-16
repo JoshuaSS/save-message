@@ -1,0 +1,17 @@
+{
+  "name": "msg",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "~4.13.1",
+    "mongodb": "2.0.52",
+    "express-session": "~1.12.1",
+    "connect-mongo": "~1.0.2"
+  }
+}
