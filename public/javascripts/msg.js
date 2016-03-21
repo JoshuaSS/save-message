@@ -1,6 +1,6 @@
-var getUrl = "";
-var addUrl = "/";
-var postUrl = addUrl;
+var ifOnce;
+var postUrl;
+
 
 //清空信息框内容
 $("#msgClear").click(function() {
@@ -34,6 +34,14 @@ $("#msgSave").click(function () {
   handlePost();
 });
 
+$(document).ready(function () {
+  //生成“阅后即焚”选择框
+  $("[name='once']").bootstrapSwitch();
+  $("input[name='once']").on('switchChange.bootstrapSwitch', function(event, state) {
+    ifOnce = state;
+  });
+});
+
 function handleGet() {
   waitingDialog.show();
   $.ajax({
@@ -48,6 +56,7 @@ function handleGet() {
         if (data != "error") {
           $("#msgText").val(data);
         } else {
+          $("#msgText").val("");
           if ($.support.leadingWhitespace) {
             $.toaster({ priority: 'info', title: '信息', message: '没有对应数据！'});
             return;
@@ -75,9 +84,14 @@ function handleGet() {
 
 function handlePost() {
   waitingDialog.show();
+  if (ifOnce) {
+    postUrl = "/api/once";
+  } else {
+    postUrl = "/api"
+  }
   $.ajax({
     async: true,
-    url: "/api",
+    url: postUrl,
     type: 'post',
     data: {message: $('#msgText').val()},
     dataType: 'text',
@@ -111,19 +125,12 @@ $.toaster({ settings :
         'id'        : 'toaster',
         'container' : 'body',
         'template'  : '<div></div>',
-        'class'     : 'toaster',
+        'class'     : 'toaster toaster-custom',
         'css'       :
         {
             'position' : 'fixed',
             'top'      : '10px',
-            'right'    : '35%',
-            'width'    : '300px',
             'zIndex'   : 50000
         }
     }
 }});
-
-$(document).ready(function () {
-  //生成“阅后即焚”选择框
-  $("[name='once']").bootstrapSwitch();
-});

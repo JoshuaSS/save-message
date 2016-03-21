@@ -15,11 +15,28 @@ body {
 }
 .container {
   margin-top: 40px;
-  width: 800px;
 }
-
-/* input-group */
-.input-group {
+.toaster-custom {
+  poistion: fixed;
+  right: 35%;
+}
+@media screen and (min-width: 300px) {
+  .container {
+    width: 93%;
+  }
+  .toaster-custom {
+    width: 60%!important;
+    right: 20%!important;
+  }
+}
+@media screen and (min-width: 767px) {
+  .container {
+    width: 767px;
+  }
+  .toaster-custom {
+    width: 200px!important;
+    right: 38%!important;
+  }
 }
 
 /* textarea */
@@ -60,10 +77,17 @@ body {
   background-color: #77aaad;
 }
 .bootstrap-switch .bootstrap-switch-handle-off, .bootstrap-switch .bootstrap-switch-handle-on, .bootstrap-switch .bootstrap-switch-label {
-  font-size: 15px;
-  line-height: 22px;
 }
 .bootstrap-switch.bootstrap-switch-focused{
   border-color: #ccc;
   box-shadow: 0 0 1px 2px #efefef;
+}
+@media screen and (min-width: 300px) {
+  .bootstrap-switch .bootstrap-switch-handle-off, .bootstrap-switch .bootstrap-switch-handle-on, .bootstrap-switch .bootstrap-switch-label {
+    display: block;
+  }
+}
+@media screen and (min-width: 767px) {
+  .bootstrap-switch {
+  }
 }
