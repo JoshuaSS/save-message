@@ -34,7 +34,7 @@ app.get('/api/:key', function(req, res) {
   }
 });
 
-app.listen(1245, function () {
+app.listen(1244, function () {
   console.log('Example app listening');
 });
 
