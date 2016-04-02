@@ -40,6 +40,7 @@ $(document).ready(function () {
   $("input[name='once']").on('switchChange.bootstrapSwitch', function(event, state) {
     ifOnce = state;
   });
+  $("[name='test']").bootstrapSwitch();
 });
 
 function handleGet() {
